@@ -38,8 +38,7 @@ public interface ApiServer {
                    @Query("rank") String rank,
                    @Query("size") String size);
     @GET("/api/v2/data/category/GanHuo/type/Android/page/1/count/10")
-    Observable<SearchDataList>
-    getTest();
+    Observable<SearchDataList> getTest();
 
 
     @GET("/")
@@ -124,7 +123,7 @@ public interface ApiServer {
 //     * 来自https://blog.csdn.net/impure/article/details/79658098
 //     * @Streaming 这个注解必须添加，否则文件全部写入内存，文件过大会造成内存溢出
 //     */
-//    @Streaming
-//    @GET
-//    Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
+    @Streaming
+    @GET
+    Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
 }

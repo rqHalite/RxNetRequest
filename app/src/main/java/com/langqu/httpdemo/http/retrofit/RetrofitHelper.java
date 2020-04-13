@@ -50,10 +50,4 @@ public class RetrofitHelper  {
         return mRetrofit;
     }
 
-    //获取服务service对象 对应每一个接口都是一个微服务
-    public static <T> T getService(Class<T> classz) {
-        return RetrofitHelper.getInstance()
-                .getRetrofit()
-                .create(classz);
-    }
 }

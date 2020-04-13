@@ -1,9 +1,12 @@
 package com.langqu.httpdemo.adapter;
 
+import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.langqu.httpdemo.bean.DataBean;
+import com.langqu.httpdemo.bean.SearchDataList;
 import com.langqu.httpdemo.viewholder.ImageHolder;
 import com.youth.banner.adapter.BannerAdapter;
 
@@ -12,15 +15,18 @@ import java.util.List;
 /**
  * 自定义布局，图片
  */
-public class ImageAdapter extends BannerAdapter<DataBean, ImageHolder> {
+public class ImageAdapter extends BannerAdapter<SearchDataList.DataBean, ImageHolder> {
 
-    public ImageAdapter(List<DataBean> mDatas) {
+    private final Context mContext;
+
+    public ImageAdapter(Context context,List<SearchDataList.DataBean> mDatas) {
         //设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
         super(mDatas);
+        mContext = context;
     }
 
     //更新数据
-    public void updateData(List<DataBean> data) {
+    public void updateData(List<SearchDataList.DataBean> data) {
         //这里的代码自己发挥，比如如下的写法等等
         mDatas.addAll(data);
         notifyDataSetChanged();
@@ -41,8 +47,9 @@ public class ImageAdapter extends BannerAdapter<DataBean, ImageHolder> {
     }
 
     @Override
-    public void onBindView(ImageHolder holder, DataBean data, int position, int size) {
-        holder.imageView.setImageResource(data.imageRes);
+    public void onBindView(ImageHolder holder, SearchDataList.DataBean data, int position, int size) {
+//        holder.imageView.setImageResource(data);
+        Glide.with(mContext).load(data.getImages().get(0)).into(holder.imageView);
     }
 
 }

@@ -1,7 +1,5 @@
 package com.langqu.httpdemo.http.retrofit.rx;
 
-import com.langqu.httpdemo.bean.SearchDataList;
-import com.langqu.httpdemo.http.retrofit.RetrofitHelper;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.List;
@@ -28,6 +26,11 @@ public class RxNetWorkUtil {
     public static void getTestList2(RxAppCompatActivity activity, Map<String,String> map, MyObserver observer){
         RxRetrofitHelper.getInstance().
                 getTest2(map).compose(RxHelper.observableIO2Main(activity))
+                .subscribe(observer);
+    }
+    public static void downLoad(RxAppCompatActivity activity, Map<String,String> map, MyObserver observer){
+        RxRetrofitHelper.getInstance().
+                download(map.get("start"),map.get("url")).compose(RxHelper.observableIO2Main(activity))
                 .subscribe(observer);
     }
 }

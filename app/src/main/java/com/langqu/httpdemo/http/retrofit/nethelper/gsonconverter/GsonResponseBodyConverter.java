@@ -16,11 +16,6 @@ import java.lang.reflect.Type;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 
-/**
- * author：libilang
- * time: 17/10/31 20:00
- * 邮箱：libi_lang@163.com
- */
 public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
     private final Gson gson;
     private final Type type;
