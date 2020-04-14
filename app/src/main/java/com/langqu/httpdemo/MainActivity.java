@@ -4,21 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.langqu.httpdemo.adapter.ImageAdapter;
 import com.langqu.httpdemo.base.BaseActivity;
+import com.langqu.httpdemo.bean.DownloadInfo;
+import com.langqu.httpdemo.bean.ImageBean;
 import com.langqu.httpdemo.bean.SearchDataList;
+import com.langqu.httpdemo.http.Api;
+import com.langqu.httpdemo.http.retrofit.loadfile.DownFileCallback;
+import com.langqu.httpdemo.http.retrofit.loadfile.RxLoadFlieManager;
 import com.langqu.httpdemo.http.retrofit.rx.MyObserver;
 import com.langqu.httpdemo.http.retrofit.rx.RxNetWorkUtil;
 import com.langqu.httpdemo.observer.ObserverListener;
 import com.langqu.httpdemo.observer.ObserverManager;
+import com.langqu.httpdemo.utils.AppStoragePath;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.util.BannerUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,14 +42,16 @@ public class MainActivity extends BaseActivity implements OnBannerListener, Obse
     private Banner banner;
     private List<SearchDataList.DataBean> mDatas = new ArrayList<>();
     private ImageAdapter imageAadapter;
+//    private String url3 = Api.baseUrl + "download/503405?id=com.to8to.renovationcompany&ref=appstore.mobile_download&nonce=-2607778849964962178%3A26445986&appClientId=2882303761517485445&appSignature=Dq3tjiWIM0WIB-ojJTPv4Rjp_iQCjwnk3-vcrDKtidE";
+    private ProgressBar main_progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         banner = findViewById(R.id.banner);
-        findViewById(R.id.load_file).setOnClickListener(this);
-        getData();
+        main_progress = findViewById(R.id.main_progress);
+//        getData();
         banner.setAdapter(imageAadapter = new ImageAdapter(this,mDatas));
         banner.setIndicator(new RectangleIndicator(this));
         banner.setIndicatorNormalWidth((int) BannerUtils.dp2px(12));
@@ -114,7 +127,7 @@ public class MainActivity extends BaseActivity implements OnBannerListener, Obse
     public void onClick(View v) {
 //        Map<String,String> map = new HashMap<>();
 //        map.put("start","");
-//        map.put("url","http://app.mi.com/download/503405?id=com.to8to.renovationcompany&ref=appstore.mobile_download&nonce=-2607778849964962178%3A26445986&appClientId=2882303761517485445&appSignature=Dq3tjiWIM0WIB-ojJTPv4Rjp_iQCjwnk3-vcrDKtidE");
+//        map.put("url","download/503405?id=com.to8to.renovationcompany&ref=appstore.mobile_download&nonce=-2607778849964962178%3A26445986&appClientId=2882303761517485445&appSignature=Dq3tjiWIM0WIB-ojJTPv4Rjp_iQCjwnk3-vcrDKtidE");
 //        RxNetWorkUtil.downLoad(this, map, new MyObserver(this) {
 //            @Override
 //            public void onSuccess(Object demo) {
@@ -126,5 +139,58 @@ public class MainActivity extends BaseActivity implements OnBannerListener, Obse
 //
 //            }
 //        });
+
+
+    }
+
+    public void onLoad(View view) {
+
+            RxNetWorkUtil.getImages(this, new MyObserver(this) {
+                @Override
+                public void onSuccess(Object demo) {
+                    ImageBean list = (ImageBean) demo;
+                }
+
+                @Override
+                public void onFailure(Throwable e, String errorMsg) {
+
+                }
+            });
+
+
+
+//        RxLoadFlieManager.getInstance().downloadPath(AppStoragePath.getCachePath(this)).download(Api.loadUrl, new DownFileCallback() {
+//
+//            @Override
+//            public void onSuccess(DownloadInfo info) {
+//
+//                Toast.makeText(MainActivity.this, info.getUrl() + "下载完成", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFail(String msg) {
+//                Toast.makeText(MainActivity.this, msg + "下载失败", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onProgress(final long totalSize, final long downSize) {
+//                // 需要注意的是，如果文件总大小为50M，已下载的大小为10M，
+//                // 再次下载时onProgress返回的totalSize是文件总长度
+//                // 减去 已下载大小 10M， 即40M，downSize为本次下载的已下载量
+//                // 好消息是，我已经在内部做过处理，放心使用吧，但是这个问题大家还是要知道的
+//                Log.e("load","---->>>>> 总共大小" + totalSize+"------->>>已下载大小" + downSize);
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        int progress = (int) (downSize * 100 / totalSize);
+//                        main_progress.setProgress(progress);
+//                    }
+//                });
+//            }
+//        });
+    }
+
+    public void stopLoad(View view) {
+        RxLoadFlieManager.getInstance().stop(Api.loadUrl);
     }
 }

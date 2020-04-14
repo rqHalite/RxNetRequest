@@ -1,5 +1,6 @@
 package com.langqu.httpdemo.http;
 
+import com.langqu.httpdemo.bean.ImageBean;
 import com.langqu.httpdemo.bean.SearchDataList;
 import com.langqu.httpdemo.http.retrofit.rx.BaseReponse;
 
@@ -45,7 +46,9 @@ public interface ApiServer {
     Observable<BaseReponse<SearchDataList>>
     getTest2(@QueryMap Map<String, String> map);
 
-
+    @Headers("Accept:application/json")
+    @POST("saas/android/getimage64")
+    Observable<ImageBean> postUser(@Query("deviceNo") String deviceNo);
 
 //    /**
 //     * TODO Get请求
@@ -126,4 +129,5 @@ public interface ApiServer {
     @Streaming
     @GET
     Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
+
 }
