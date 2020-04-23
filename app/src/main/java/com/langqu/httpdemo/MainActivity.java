@@ -1,35 +1,23 @@
 package com.langqu.httpdemo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.langqu.httpdemo.adapter.ImageAdapter;
 import com.langqu.httpdemo.base.BaseActivity;
-import com.langqu.httpdemo.bean.DownloadInfo;
-import com.langqu.httpdemo.bean.ImageBean;
 import com.langqu.httpdemo.bean.SearchDataList;
 import com.langqu.httpdemo.http.Api;
-import com.langqu.httpdemo.http.retrofit.loadfile.DownFileCallback;
 import com.langqu.httpdemo.http.retrofit.loadfile.RxLoadFlieManager;
 import com.langqu.httpdemo.http.retrofit.rx.MyObserver;
 import com.langqu.httpdemo.http.retrofit.rx.RxNetWorkUtil;
 import com.langqu.httpdemo.observer.ObserverListener;
 import com.langqu.httpdemo.observer.ObserverManager;
-import com.langqu.httpdemo.utils.AppStoragePath;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.util.BannerUtils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,10 +133,10 @@ public class MainActivity extends BaseActivity implements OnBannerListener, Obse
 
     public void onLoad(View view) {
 
-            RxNetWorkUtil.getImages(this, new MyObserver(this) {
+            RxNetWorkUtil.getTestList(this, new MyObserver(this) {
                 @Override
                 public void onSuccess(Object demo) {
-                    ImageBean list = (ImageBean) demo;
+                    SearchDataList list = (SearchDataList) demo;
                 }
 
                 @Override
@@ -156,8 +144,6 @@ public class MainActivity extends BaseActivity implements OnBannerListener, Obse
 
                 }
             });
-
-
 
 //        RxLoadFlieManager.getInstance().downloadPath(AppStoragePath.getCachePath(this)).download(Api.loadUrl, new DownFileCallback() {
 //

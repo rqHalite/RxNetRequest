@@ -3,6 +3,8 @@ package com.langqu.httpdemo;
 import android.app.Application;
 import android.content.Context;
 
+import com.langqu.httpdemo.greendao.DaoManager;
+
 public class MyApp extends Application {
 
     private static MyApp myApp;
@@ -12,6 +14,8 @@ public class MyApp extends Application {
         super.onCreate();
 
         myApp = this;
+
+        DaoManager.getInstance().init(this);
     }
 
     public static MyApp getInstance(){

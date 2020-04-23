@@ -11,11 +11,6 @@ import okhttp3.ResponseBody;
 
 public class RxNetWorkUtil {
 
-    public static void getImages(RxAppCompatActivity activity, MyObserver observer) {
-        RxRetrofitHelper.getInstance().
-                postUser("LANGQU001").compose(RxHelper.observableIO2Main(activity))
-                .subscribe(observer);
-    }
 
     public static void getTestList(RxAppCompatActivity activity, MyObserver observer) {
         RxRetrofitHelper.getInstance().

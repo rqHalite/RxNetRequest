@@ -1,30 +1,14 @@
 package com.langqu.httpdemo.http;
 
-import com.langqu.httpdemo.bean.ImageBean;
 import com.langqu.httpdemo.bean.SearchDataList;
 import com.langqu.httpdemo.http.retrofit.rx.BaseReponse;
 
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.HeaderMap;
-import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -38,7 +22,7 @@ public interface ApiServer {
     getSearchVideo(@Path("searchname") String searchname,
                    @Query("rank") String rank,
                    @Query("size") String size);
-    @GET("/api/v2/data/category/GanHuo/type/Android/page/1/count/10")
+    @GET("/api/v2/data/category/GanHuo/type/Android/page/1/count/2")
     Observable<SearchDataList> getTest();
 
 
@@ -46,9 +30,6 @@ public interface ApiServer {
     Observable<BaseReponse<SearchDataList>>
     getTest2(@QueryMap Map<String, String> map);
 
-    @Headers("Accept:application/json")
-    @POST("saas/android/getimage64")
-    Observable<ImageBean> postUser(@Query("deviceNo") String deviceNo);
 
 //    /**
 //     * TODO Get请求
