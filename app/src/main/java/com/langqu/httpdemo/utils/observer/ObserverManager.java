@@ -1,4 +1,4 @@
-package com.langqu.httpdemo.observer;
+package com.langqu.httpdemo.utils.observer;
 
 import java.util.ArrayList;
 import java.util.List;

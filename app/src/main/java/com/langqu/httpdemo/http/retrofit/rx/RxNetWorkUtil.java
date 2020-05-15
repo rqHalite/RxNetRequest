@@ -12,9 +12,9 @@ import okhttp3.ResponseBody;
 public class RxNetWorkUtil {
 
 
-    public static void getTestList(RxAppCompatActivity activity, MyObserver observer) {
+    public static void getTestList(RxAppCompatActivity activity,Map<String,String> map, MyObserver observer) {
         RxRetrofitHelper.getInstance().
-                getTest().compose(RxHelper.observableIO2Main(activity))
+                getTest(map.get("type"),map.get("page"),map.get("count")).compose(RxHelper.observableIO2Main(activity))
                 .subscribe(observer);
     }
 

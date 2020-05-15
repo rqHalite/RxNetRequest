@@ -5,9 +5,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.langqu.httpdemo.bean.DataBean;
 import com.langqu.httpdemo.bean.SearchDataList;
-import com.langqu.httpdemo.viewholder.ImageHolder;
+import com.langqu.httpdemo.utils.viewholder.ImageHolder;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;

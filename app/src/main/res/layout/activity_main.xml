@@ -4,43 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
+<!--    <com.youth.banner.Banner-->
+<!--        android:id="@+id/banner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="250dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:orientation="vertical">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <Button-->
+<!--                android:onClick="onLoad"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="下载" />-->
+
+<!--            <Button-->
+<!--                android:onClick="stopLoad"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="取消or暂停3" />-->
+<!--        </LinearLayout>-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/main_progress"-->
+<!--            style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1" />-->
+<!--    </LinearLayout>-->
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="0px"/>
 
-    <LinearLayout
+
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:onClick="onLoad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下载" />
-
-            <Button
-                android:onClick="stopLoad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="取消or暂停3" />
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/main_progress"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_height="@dimen/px_140"
+        android:background="#ffffff"
+        tl:tl_iconHeight="23dp"
+        tl:tl_iconWidth="23dp"
+        tl:tl_indicator_color="#2C97DE"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="#2C97DE"
+        tl:tl_textUnselectColor="#66000000"
+        tl:tl_textsize="12sp"
+        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_height="0px"/>
 
 </LinearLayout>

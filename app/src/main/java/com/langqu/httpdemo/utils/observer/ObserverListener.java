@@ -1,4 +1,4 @@
-package com.langqu.httpdemo.observer;
+package com.langqu.httpdemo.utils.observer;
 
 /**
  * 观察着

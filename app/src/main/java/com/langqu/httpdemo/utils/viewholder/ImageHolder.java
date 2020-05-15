@@ -1,4 +1,4 @@
-package com.langqu.httpdemo.viewholder;
+package com.langqu.httpdemo.utils.viewholder;
 
 import android.view.View;
 import android.widget.ImageView;

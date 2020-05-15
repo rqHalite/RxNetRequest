@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">HttpDemo</string>
+
+    <string name="base_back_text">返回</string>
+    <string name="string9000">连接超时，请检查网络是否正常</string>
+    <string name="string9001">找不到服务器路径</string>
+    <string name="string9002">数据解析异常</string>
+    <string name="string9003">服务器异常操作</string>
+    <string name="string9004">加载失败</string>
+    <string name="pullToRefresh">下拉刷新</string>
+    <string name="releaseToUpdate">松手更新</string>
+    <string name="loading">加载中...</string>
+
+    <style name="loadSuccess">加载成功</style>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

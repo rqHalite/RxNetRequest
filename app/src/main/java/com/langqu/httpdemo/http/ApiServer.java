@@ -22,8 +22,10 @@ public interface ApiServer {
     getSearchVideo(@Path("searchname") String searchname,
                    @Query("rank") String rank,
                    @Query("size") String size);
-    @GET("/api/v2/data/category/GanHuo/type/Android/page/1/count/2")
-    Observable<SearchDataList> getTest();
+    @GET("/api/v2/data/category/GanHuo/type/{type}/page/{page}/count/{count}")
+    Observable<SearchDataList> getTest(@Path("type") String type,
+                                       @Path("page") String page,
+                                       @Path("count") String count);
 
 
     @GET("/")
