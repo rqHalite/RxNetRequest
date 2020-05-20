@@ -16,11 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
-        <activity android:name=".MainActivity"></activity>
         <activity
-            android:name=".ui.StartActivity"
+            android:name=".ui.StartActivity"></activity>
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask">
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

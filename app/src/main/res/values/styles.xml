@@ -132,4 +132,12 @@
         <!-- 解决 Android 5.1 及以上版本 Button 英文字符串自动变大写的问题 -->
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <!-- 弹出框动画 由下至上 -->
+    <style name="dialogstyle_vertical" mce_bogus="1" parent="android:Animation">
+        <!-- 进入时的动画 -->
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <!-- 退出时的动画 -->
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
 </resources>
